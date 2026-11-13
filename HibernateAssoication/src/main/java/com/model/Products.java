@@ -1,9 +1,11 @@
 package com.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Products {
@@ -13,6 +15,17 @@ public class Products {
 	private Integer pid;
 	private String pname;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Customers customers;
+	
+	public Customers getCustomers() {
+		return customers;
+	}
+
+	public void setCustomers(Customers customers) {
+		this.customers = customers;
+	}
+
 	public Products()
 	{
 		System.out.println("Object Created for Products");
@@ -42,6 +55,6 @@ public class Products {
 
 	@Override
 	public String toString() {
-		return "Products [pid=" + pid + ", pname=" + pname + "]";
+		return "Products [pid=" + pid + ", pname=" + pname + ", customers=" + customers + "]";
 	}
 }
