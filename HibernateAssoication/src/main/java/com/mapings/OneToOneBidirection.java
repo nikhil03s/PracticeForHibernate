@@ -25,6 +25,7 @@ public class OneToOneBidirection {
 		customers.setCname("Rohan");
 		
 		products.setCustomers(customers);
+		customers.setProducts(products);
 		try {
 			transaction =session.beginTransaction();
 	
